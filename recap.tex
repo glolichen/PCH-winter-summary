@@ -73,6 +73,24 @@
 	} \\
 \end{gather*}
 
+\subsection{Half Angle Identites}
+\begin{gather*}
+	\hyperref[proof:sinhalf]{
+		\sin\frac{\theta}{2}=\pm\sqrt{\frac{1-\cos\theta}{2}}
+	} \\
+	\hyperref[proof:coshalf]{
+		\cos\frac{\theta}{2}=\pm\sqrt{\frac{1+\cos\theta}{2}}
+	} \\
+	\hyperref[proof:tandouble]{
+		\begin{aligned}
+		\tan\frac{\theta}{2}
+		&=\pm\sqrt{\frac{1-\cos\theta}{1+\cos\theta}} \\
+		&=\frac{1-\cos\theta}{\sin\theta} \\
+		&=\frac{\sin\theta}{1+\cos\theta} \\
+		\end{aligned}
+	} \\
+\end{gather*}
+
 \subsection{Product-to-Sum Identities}
 \begin{center}
 \hyperref[proof:p2s]{
@@ -85,6 +103,22 @@
 				+\cos\left(\alpha+\beta\right)}{2} \\
 		\sin\alpha\sin\beta=\frac{\cos\left(\alpha-\beta\right)
 			-\cos\left(\alpha+\beta\right)}{2} \\
+	\end{aligned}$
+}
+\end{center}
+
+\subsection{Sum-to-Product Identities}
+\begin{center}
+\hyperref[proof:s2p]{
+	$\begin{aligned}
+		\sin\alpha+\sin\beta&=
+		2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+		\sin\alpha-\sin\beta&=
+		2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
+		\cos\alpha+\cos\beta&=
+		2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+		\cos\alpha-\cos\beta&=
+		-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
 	\end{aligned}$
 }
 \end{center}
@@ -178,6 +212,47 @@
 		\tan2\theta&=\tan\left(\theta+\theta\right) \\
 		&=\frac{\tan\theta+\tan\theta}{1-\tan\theta\tan\theta} \\
 		&=\boxed{\frac{2\tan\theta}{1-\tan^2\theta}} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Sine Half Angle}
+\label{proof:sinhalf}
+\begin{proof}
+	$\begin{aligned}[t]
+		\cos\theta&=\cos\left(2\cdot\frac{\theta}{2}\right) \\
+		\cos\theta&=1-2\sin^2\frac{\theta}{2} \\
+		2\sin^2\frac{\theta}{2}&=1-\cos\theta \\
+		\Aboxed{\sin\frac{\theta}{2}&=\pm\sqrt{\frac{1-\cos\theta}{2}}} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Cosine Half Angle}
+\label{proof:coshalf}
+\begin{proof}
+	$\begin{aligned}[t]
+		\cos\theta&=\cos\left(2\cdot\frac{\theta}{2}\right) \\
+		\cos\theta&=2\cos^2\frac{\theta}{2}-1 \\
+		2\cos^2\frac{\theta}{2}&=1+\cos\theta \\
+		\Aboxed{\cos\frac{\theta}{2}&=\pm\sqrt{\frac{1+\cos\theta}{2}}} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Tangent Half Angle}
+\label{proof:tanhalf}
+\begin{proof}
+	$\begin{aligned}[t]
+		\tan\frac{\theta}{2}&=\sin\frac{\theta}{2}/{\cos\frac{\theta}{2}} \\
+		&=\sqrt{\frac{1-\cos\theta}{2}}/\sqrt{\frac{1+\cos\theta}{2}} \\
+		&=\sqrt{\frac{1-\cos\theta}{2}/\frac{1+\cos\theta}{2}} \\
+		&=\boxed{\pm\sqrt{\frac{1-\cos\theta}{1+\cos\theta}}} \\
+		&=\sqrt{\frac{1-\cos\theta}{1+\cos\theta}\cdot\frac{1-\cos\theta}{1-\cos\theta}} \\
+		&=\sqrt{\frac{\left(1-\cos\theta\right)^2}{1-\cos^2\theta}} \\
+		&=\sqrt{\frac{\left(1-\cos\theta\right)^2}{\sin^2\theta}} \\
+		&=\boxed{\frac{1-\cos\theta}{\sin\theta}} \\
+		&=\sqrt{\frac{1-\cos\theta}{1+\cos\theta}\cdot\frac{1+\cos\theta}{1+\cos\theta}} \\
+		&=\sqrt{\frac{1-\cos^2\theta}{\left(1-\cos\theta\right)^2}} \\
+		&=\sqrt{\frac{\sin^2\theta}{\left(1+\cos\theta\right)^2}} \\
+		&=\boxed{\frac{\sin\theta}{1+\cos\theta}} \\
 	\end{aligned} \\$
 \end{proof}
 
