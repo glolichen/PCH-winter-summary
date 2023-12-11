@@ -1,0 +1,225 @@
+\documentclass{article}
+
+\usepackage[letterpaper, portrait, margin=0.8in]{geometry}
+
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{graphicx, float}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{esdiff}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+%opening
+\title{PCH Winter Summary}
+\author{Jayden Li}
+\date{December 2023 -- February 2024}
+
+\begin{document}
+
+\maketitle
+
+\linespread{1.25}
+\fontsize{12pt}{12pt}\selectfont
+
+\section{Trigonometry}
+\subsection{Pythagorean Identity}
+\begin{center}
+	$\sin^2x+\cos^2x=1$
+\end{center}
+
+\subsection{Even/Odd Identities}
+\begin{center}
+	Cosine is even. $\cos\left(-\theta\right)=\cos\theta$ \\
+	Sine is odd. $\sin\left(-\theta\right)=-\sin\theta$ \\
+	Tangent is odd. $\tan\left(-\theta\right)=-\tan\theta$ \\
+\end{center}
+
+\subsection{Angle Addition and Subtraction Identities}
+\begin{gather*}
+	\sin\left(\alpha+\beta\right)=
+	\sin\alpha\cos\beta+\cos\alpha\sin\beta \\
+	\sin\left(\alpha-\beta\right)=
+	\sin\alpha\cos\beta-\cos\alpha\sin\beta \\
+	\cos\left(\alpha+\beta\right)=
+	\cos\alpha\cos\beta-\sin\alpha\sin\beta \\
+	\cos\left(\alpha-\beta\right)=
+	\cos\alpha\cos\beta+\sin\alpha\sin\beta \\
+	\hyperref[proof:tanadd]{
+		\tan\left(\alpha+\beta\right)=
+		\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}
+		} \\
+	\hyperref[proof:tansub]{
+		\tan\left(\alpha-\beta\right)=
+		\frac{\tan\alpha-\tan\beta}{1+\tan\alpha\tan\beta}
+	} \\
+\end{gather*}
+
+\subsection{Double Angle Identites}
+\begin{gather*}
+	\hyperref[proof:sindouble]{
+		\sin2\theta=2\sin\theta\cos\theta
+	} \\
+	\hyperref[proof:cosdouble]{
+		\begin{aligned}
+			\cos2\theta&=\cos^2\theta-\sin^2\theta \\
+			&=1-2\sin^2\theta \\
+			&=2\cos^2\theta-1 \\
+		\end{aligned}
+	} \\
+	\hyperref[proof:tandouble]{
+		\tan2\theta=\frac{2\tan\theta}{1-\tan^2\theta}
+	} \\
+\end{gather*}
+
+\subsection{Product-to-Sum Identities}
+\begin{center}
+\hyperref[proof:p2s]{
+	$\begin{aligned}
+		\sin\alpha\cos\beta=\frac{\sin\left(\alpha+\beta\right)
+			+\sin\left(\alpha-\beta\right)}{2} \\
+		\cos\alpha\sin\beta=\frac{\sin\left(\alpha+\beta\right)
+			-\sin\left(\alpha-\beta\right)}{2} \\
+			\cos\alpha\cos\beta=\frac{\cos\left(\alpha-\beta\right)
+				+\cos\left(\alpha+\beta\right)}{2} \\
+		\sin\alpha\sin\beta=\frac{\cos\left(\alpha-\beta\right)
+			-\cos\left(\alpha+\beta\right)}{2} \\
+	\end{aligned}$
+}
+\end{center}
+
+
+
+
+
+
+
+\pagebreak
+\section{Derivations}
+
+\subsection{Tangent Angle Addition}
+\label{proof:tanadd}
+\begin{proof}
+	$\begin{aligned}[t]
+		\tan\left(\alpha+\beta\right)
+		&=\frac{\sin\left(\alpha+\beta\right)}
+			 {\cos\left(\alpha+\beta\right)} \\
+		&=\frac{\sin\alpha\cos\beta+\cos\alpha\sin\beta}
+			 {\cos\alpha\cos\beta-\sin\alpha\sin\beta} \\
+		&=\frac{\sin\alpha\cos\beta+\cos\alpha\sin\beta}{\cos\alpha\cos\beta}/
+		\frac{\cos\alpha\cos\beta-\sin\alpha\sin\beta}{\cos\alpha\cos\beta} \\
+		&=\left(\frac{\sin\alpha\cos\beta}{\cos\alpha\cos\beta}+
+		\frac{\cos\alpha\sin\beta}{\cos\alpha\cos\beta}\right)/
+		\left(\frac{\cos\alpha\cos\beta}{\cos\alpha\cos\beta}-
+		\frac{\sin\alpha\sin\beta}{\cos\alpha\cos\beta}\right) \\
+		&=\boxed{\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Tangent Angle Subtraction}
+\label{proof:tansub}
+\begin{proof}
+	$\begin{aligned}[t]
+		\tan\left(\alpha-\beta\right)
+		&=\tan\left(\alpha+\left(-\beta\right)\right) \\
+		&=\frac{\tan\alpha+\tan\left(-\beta\right)}
+			 {1-\tan\alpha\tan\left(-\beta\right)} \\
+		&=\frac{\tan\alpha+\left(-\tan\beta\right)}
+			 {1-\tan\alpha\cdot\left(-\tan\beta\right)} \\
+		&=\boxed{\frac{\tan\alpha-\tan\beta}{1+\tan\alpha\tan\beta}} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Sine Double Angle}
+\label{proof:sindouble}
+\begin{proof}
+	$\begin{aligned}[t]
+		\sin2\theta&=\sin\left(\theta+\theta\right) \\
+		&=\sin\theta\cos\theta+\cos\theta\sin\theta \\
+		&=\boxed{2\sin\theta\cos\theta} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Cosine Double Angle}
+\label{proof:cosdouble}
+\begin{proof}
+	$\begin{aligned}[t]
+		\cos2\theta&=\cos\left(\theta+\theta\right) \\
+		&=\cos\theta\cos\theta-\sin\theta\sin\theta \\
+		&=\boxed{\cos^2\theta-\sin^2\theta} \\
+		&=\cos^2\theta-\left(1-\cos^2\theta\right) \\
+		&=\boxed{2\cos^2\theta-1} \\
+		&=2\left(1-\sin^2\theta\right)-1 \\
+		&=\boxed{1-2\sin^2\theta} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Tangent Double Angle}
+\label{proof:tandouble}
+\begin{proof}
+	$\begin{aligned}[t]
+		\tan2\theta&=\tan\left(\theta+\theta\right) \\
+		&=\frac{\tan\theta+\tan\theta}{1-\tan\theta\tan\theta} \\
+		&=\boxed{\frac{2\tan\theta}{1-\tan^2\theta}} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Product-to-Sum Identities}
+\label{proof:p2s}
+\begin{proof}
+	\begin{align}
+		\sin\left(\alpha+\beta\right)=
+		\sin\alpha\cos\beta+\cos\alpha\sin\beta \\
+		\sin\left(\alpha-\beta\right)=
+		\sin\alpha\cos\beta-\cos\alpha\sin\beta \\
+		\cos\left(\alpha+\beta\right)=
+		\cos\alpha\cos\beta-\sin\alpha\sin\beta \\
+		\cos\left(\alpha-\beta\right)=
+		\cos\alpha\cos\beta+\sin\alpha\sin\beta
+	\end{align}
+	\begin{align*}
+		\intertext{\centering{$(1)+(2)$}}
+		\sin\left(\alpha+\beta\right)+\sin\left(\alpha-\beta\right)&=
+		\sin\alpha\cos\beta+\cos\alpha\sin\beta
+		+\sin\alpha\cos\beta-\cos\alpha\sin\beta \\
+		\sin\left(\alpha+\beta\right)+\sin\left(\alpha-\beta\right)&=
+		2\sin\alpha\cos\beta \\
+		\Aboxed{\sin\alpha\cos\beta&=\frac{\sin\left(\alpha+\beta\right)
+		+\sin\left(\alpha-\beta\right)}{2}}
+	\end{align*}
+	\begin{align*}
+		\intertext{\centering{$(1)-(2)$}}
+		\sin\left(\alpha+\beta\right)-\sin\left(\alpha-\beta\right)&=
+		\sin\alpha\cos\beta+\cos\alpha\sin\beta
+		-\sin\alpha\cos\beta+\cos\alpha\sin\beta \\
+		\sin\left(\alpha+\beta\right)-\sin\left(\alpha-\beta\right)&=
+		2\cos\alpha\sin\beta \\
+		\Aboxed{\cos\alpha\sin\beta&=\frac{\sin\left(\alpha+\beta\right)
+		-\sin\left(\alpha-\beta\right)}{2}}
+	\end{align*}
+	\begin{align*}
+		\intertext{\centering{$(3)+(4)$}}
+		\cos\left(\alpha+\beta\right)+\cos\left(\alpha-\beta\right)&=
+		\cos\alpha\cos\beta-\sin\alpha\sin\beta
+		+\cos\alpha\cos\beta+\sin\alpha\sin\beta \\
+		\cos\left(\alpha+\beta\right)+\cos\left(\alpha-\beta\right)&=
+		2\cos\alpha\cos\beta \\
+		\Aboxed{\cos\alpha\cos\beta&=\frac{\cos\left(\alpha-\beta\right)
+		+\cos\left(\alpha+\beta\right)}{2}}
+	\end{align*}
+	\begin{align*}
+		\intertext{\centering{$(3)-(4)$}}
+		\cos\left(\alpha+\beta\right)-\cos\left(\alpha-\beta\right)&=
+		\cos\alpha\cos\beta-\sin\alpha\sin\beta
+		-\cos\alpha\cos\beta-\sin\alpha\sin\beta \\
+		\cos\left(\alpha+\beta\right)-\cos\left(\alpha-\beta\right)&=
+		-2\sin\alpha\sin\beta \\
+		\sin\alpha\sin\beta&=-\frac{\cos\left(\alpha+\beta\right)
+		-\cos\left(\alpha-\beta\right)}{2} \\
+		\Aboxed{\sin\alpha\sin\beta&=\frac{\cos\left(\alpha-\beta\right)
+		-\cos\left(\alpha+\beta\right)}{2}}
+	\end{align*}
+\end{proof}
+
+
+\end{document}
