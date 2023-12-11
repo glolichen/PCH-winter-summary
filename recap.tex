@@ -9,15 +9,18 @@
 \usepackage{esdiff}
 \usepackage{titlesec}
 \usepackage{hyperref}
+\usepackage{interval}
 \usepackage{mdframed}
+\usepackage{multicol}
 
 %opening
 \title{PCH Winter Summary}
 \author{Jayden Li}
 \date{December 2023 -- February 2024}
 
-\begin{document}
+\raggedcolumns
 
+\begin{document}
 \maketitle
 
 \linespread{1.25}
@@ -56,7 +59,7 @@
 	} \\
 \end{gather*}
 
-\subsection{Double Angle Identites}
+\subsection{Double Angle Identites (PS \#29)}
 \begin{gather*}
 	\hyperref[proof:sindouble]{
 		\sin2\theta=2\sin\theta\cos\theta
@@ -73,7 +76,7 @@
 	} \\
 \end{gather*}
 
-\subsection{Half Angle Identites}
+\subsection{Half Angle Identites (PS \#30)}
 \begin{gather*}
 	\hyperref[proof:sinhalf]{
 		\sin\frac{\theta}{2}=\pm\sqrt{\frac{1-\cos\theta}{2}}
@@ -91,7 +94,7 @@
 	} \\
 \end{gather*}
 
-\subsection{Product-to-Sum Identities}
+\subsection{Product-to-Sum Identities (PS \#31)}
 \begin{center}
 \hyperref[proof:p2s]{
 	$\begin{aligned}
@@ -107,7 +110,7 @@
 }
 \end{center}
 
-\subsection{Sum-to-Product Identities}
+\subsection{Sum-to-Product Identities (PS \#31)}
 \begin{center}
 \hyperref[proof:s2p]{
 	$\begin{aligned}
@@ -123,23 +126,62 @@
 }
 \end{center}
 
-\subsection{Sum-to-Product Identities}
-\begin{center}
-\hyperref[proof:s2p]{
-	$\begin{aligned}
-		\sin\alpha+\sin\beta&=
-		2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
-		\sin\alpha-\sin\beta&=
-		2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
-		\cos\alpha+\cos\beta&=
-		2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
-		\cos\alpha-\cos\beta&=
-		-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} \\
-	\end{aligned}$
-}
-\end{center}
+\pagebreak
 
+\subsection{Finding Range}
+\subsubsection{Quadratic with Trig Functions}
+Complete the square and isolate the trig function. Example (Koch CYU \#1, Q4):
+\begin{multicols}{2}
+	\begin{align*}
+		y&=3\cos x+2\sin^2x+1 \\
+		&=3\cos x+2\left(1-\cos^2x\right)+1 \\
+		&=-2\cos^2x+3\cos x+3 \\
+		&=-2\left(\cos^2x-\frac{3}{2}\cos x-\frac{3}{2}\right) \\
+		&=-2\left(\left(\cos x-\frac{3}{4}\right)^2-\frac{9}{16}-\frac{3}{2}\right) \\
+		&=-2\left(\cos x-\frac{3}{4}\right)^2+\frac{33}{8}
+	\end{align*}
+	\begin{gather*}
+		-1\leq\cos x\leq1 \\
+		-\frac{7}{4}\leq\cos x-\frac{3}{4}\leq\frac{1}{4} \\
+		0\leq\left(\cos x-\frac{3}{4}\right)^2\leq\frac{49}{16} \\
+		-\frac{49}{8}\leq-2\left(\cos x-\frac{3}{4}\right)^2\leq0 \\
+		-\frac{16}{8}\leq-2\left(\cos x-\frac{3}{4}\right)^2+\frac{33}{8}\leq\frac{33}{8} \\
+		-2\leq y\leq\frac{33}{8} \\
+		\boxed{\text{Range: $\interval[scaled]{-2}{\frac{33}{8}}$}}
+	\end{gather*}
+\end{multicols}
+\subsubsection{Addition of Sine and Cosine}
+Rewrite $y=a\sin x+b\cos x$ in the form $y=r\cos\left(x-a\right)$. Example (PS \#31, Q8a):
+\begin{multicols}{2}
+\begin{align*}
+	y&=\sqrt{3}\sin x-\cos x \\
+	y&=r\cos\left(x-a\right) \\
+	y&=r\cos x\cos a+r\sin x\sin a
+\end{align*}
+\begin{align*}
+	\intertext{By matching coefficients:}
+	r\sin a&=-1 \\
+	r\cos a&=\sqrt{3} \\
+	\intertext{Square both equations:}
+	r^2\sin^2a&=1 \\
+	r^2\cos^2a&=3 \\
+	\intertext{Apply Pythagorean Identity:}
+	r^2\sin^2a&=1 \\
+	r^2-r^2\sin^2a&=3 \\
+	\intertext{Add the two equations:}
+	r^2&=4 \\
+	r=\pm2
+\end{align*}
+Because the range of the cosine function is always
+$\interval[scaled]{-1}{1}$, the range of $r\cos\left(x-a\right)$
+is $\interval[scaled]{-r}{r}$. No matter what the sign of $r$ is,
+the range is \boxed{\interval[scaled]{-2}{2}}.
 
+\end{multicols}
+
+\subsection{Derivatives of Trigonometric Functions (PS \#32)}
+\subsection{Trigonometric Limits (PS \#33)}
+\subsection{Inverse Trigonometric Functions (PS \#34-35)}
 
 
 
