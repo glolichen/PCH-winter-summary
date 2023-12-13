@@ -12,6 +12,7 @@
 \usepackage{interval}
 \usepackage{mdframed}
 \usepackage{multicol}
+\usepackage{tikz}
 
 %opening
 \title{PCH Winter Summary}
@@ -19,6 +20,9 @@
 \date{December 2023 -- February 2024}
 
 \raggedcolumns
+\intervalconfig {
+	soft open fences
+}
 
 \begin{document}
 \maketitle
@@ -126,6 +130,9 @@
 }
 \end{center}
 
+You don't really need to memorize these identities. They are
+very easy to prove and you can do it in the exam if you need them.
+
 \pagebreak
 
 \subsection{Finding Range}
@@ -150,6 +157,7 @@ Complete the square and isolate the trig function. Example (Koch CYU \#1, Q4):
 		\boxed{\text{Range: $\interval[scaled]{-2}{\frac{33}{8}}$}}
 	\end{gather*}
 \end{multicols}
+
 \subsubsection{Addition of Sine and Cosine}
 Rewrite $y=a\sin x+b\cos x$ in the form $y=r\cos\left(x-a\right)$. Example (PS \#31, Q8a):
 \begin{multicols}{2}
@@ -172,21 +180,196 @@ Rewrite $y=a\sin x+b\cos x$ in the form $y=r\cos\left(x-a\right)$. Example (PS \
 	r^2&=4 \\
 	r&=\pm2
 \end{align*}
+\end{multicols}
+
 Because the range of the cosine function is always
 $\interval[scaled]{-1}{1}$, the range of $r\cos\left(x-a\right)$
 is $\interval[scaled]{-r}{r}$. No matter what the sign of $r$ is,
 the range is \boxed{\interval[scaled]{-2}{2}}.
 
-\end{multicols}
+\subsubsection{With Reciprocals}
+On an interval where the denominator is never zero, just work it
+out normally. Example:
+\begin{gather*}
+	y=\frac{3}{2-\cos x} \\
+	-1\leq\cos x\leq1 \\
+	1\leq2-\cos x\leq3 \\
+	\intertext{\centering{$2-\cos x$ cannot be 0.}}
+	3\geq\frac{3}{2-\cos x}\geq1 \\
+	\intertext{\centering{Remember to flip the inequality sign
+		when taking the reciprocal.}}
+	\intertext{\centering{\boxed{\text{Range: }\interval[scaled]{1}{3}}}}
+\end{gather*}
+
+On an interval where the denominator could be zero, we simply need
+to change the last step from an \textbf{and} condition into an
+\textbf{or} condition. Example (Koch CYU \#2, Q3b):
+\begin{align*}
+	y&=\frac{1}{1-3\sqrt{1-\sin^2x}} \\
+	y&=\frac{1}{1-3\sqrt{\cos^2x}} \\
+	y&=\frac{1}{1-3\left|\cos x\right|}
+\end{align*}
+Remember the absolute value! $\sqrt{x^2}=\left|x\right|$, not $x$.
+\begin{gather*}
+	-1\leq\cos x\leq1 \\
+	0\leq\left|\cos x\right|\leq1 \\
+	-3\leq-3\left|\cos x\right|\leq0 \\
+	-2\leq1-3\left|\cos x\right|\leq1 \\
+	-\frac{1}{2}\leq\frac{1}{1-3\left|\cos x\right|}\geq1 \\
+	\intertext{We have to flip the inequality when taking reciprocals,
+		but the left side involves a negative sign, so it gets
+		flipped back into $\leq$. However, this statement is really
+		two statements chained together, and can be split into:}
+	-\frac{1}{2}\leq\frac{1}{1-3\left|\cos x\right|}\quad\textbf{or}
+	\quad\frac{1}{1-3\left|\cos x\right|}\geq1 \\
+	\intertext{\centering{\boxed{\text{Range: }\interval[scaled,
+	open left]{-\infty}{-\frac{1}{2}}\cup\interval[scaled, open right]
+	{1}{\infty}}}}
+\end{gather*}
+
+\subsubsection{Composition of Inverse Trig Function and Something Else}
+First, we see that each inverse trigonometric function, apart from
+arcsec and arccsc, is either increasing or decreasing.
+\begin{center}
+	arcsin: increasing \\
+	arccos: decreasing \\
+	arctan: increasing \\
+	arccot: decreasing \\
+\end{center}
+Basically, a function is decreasing if and only if it starts with
+"arcco." Based on this property, when finding the range of a composite
+function in the form $f\left(g\left(x\right)\right)$ where $f\left(x
+\right)$ is one of the inverse trigonometric functions, we only need
+to find the range of the inside function $g\left(x\right)$, and plug
+in the min and max of $g$ to find the range of the whole function.
+Example (PS \#35, Q4e):
+\begin{align*}
+	y&=\arctan\frac{x^2+\sqrt{3}}{x^2+1}
+\end{align*}
+Range of "inside":
+\begin{align*}
+	y&=\frac{x^2+\sqrt{3}}{x^2+1} \\
+	yx^2+y&=x^2+\sqrt{3} \\
+	x^2\left(y-1\right)&=\sqrt{3}-y \\
+	x&=\pm\sqrt{\frac{\sqrt{3}-y}{y-1}} \\
+	\\
+	y&=\pm\sqrt{\frac{\sqrt{3}-x}{x-1}} \\
+	\intertext{\centering{Find domain (because that would be range
+		of original function):}}
+	\frac{\sqrt{3}-x}{x-1}&\geq0
+\end{align*}
+\begin{center}
+Critical point: $x=\sqrt{3}$, $x=1$ \\
+\begin{tikzpicture}	
+	\draw
+	(0,0) node[circle,draw,inner sep=2pt,label=below:$-\infty$](a){}
+-- (2,0) node[circle,draw,inner sep=2pt,label=below:$1$](b){} node[midway,above]{$-$}
+-- (4,0) node[circle,fill,inner sep=2pt,label=below:$\sqrt{3}$](c){}node[midway,above]{$+$}
+-- (6,0) node[circle,draw,inner sep=2pt,label=below:$\infty$](d){} node[midway,above]{$-$};
+\end{tikzpicture}
+\end{center}
+\begin{gather*}
+	x\in\interval[scaled,open left]{1}{\sqrt{3}\,} \\
+	\arctan1=\frac{\pi}{4},\,\arctan\sqrt{3}=\frac{\pi}{3} \\
+	\intertext{\centering{The interval is open on 1, so it should
+		also be open for $\frac{\pi}{4}$.}}
+	\boxed{\text{Range: }\interval[scaled,open left]
+		{\frac{\pi}{4}}{\frac{\pi}{3}}} \\
+\end{gather*}
 
 \subsection{Finding Periodicity (PS \#31)}
+Find the periodicity of each function, then find the lowest
+common multiple.
+
 \subsection{Graphing (PS \#31)}
+Find the left end point and right end point of the parent function.
+Then find where the inner function is equal to each end point.
+Check for horizontal reflections, work out the vertical
+dilation/stretch and translation, then graph one period.
 
 \subsection{Derivatives of Trigonometric Functions (PS \#32)}
+\begin{gather*}
+	\hyperref[proof:sinderivative]{
+		\diff{}{x}\sin x=\cos x
+	} \\
+	\hyperref[proof:cosderivative]{
+		\diff{}{x}\cos x=-\sin x
+	} \\
+	\hyperref[proof:tanderivative]{
+		\diff{}{x}\tan x=\sec^2x
+	} \\
+	\hyperref[proof:cotderivative]{
+		\diff{}{x}\cot x=-\csc^2x
+	} \\
+	\hyperref[proof:secderivative]{
+		\diff{}{x}\sec x=\tan\left(x\right)\sec\left(x\right)
+	} \\
+	\hyperref[proof:cscderivative]{
+		\diff{}{x}\csc x=-\cot\left(x\right)\csc\left(x\right)
+	}
+\end{gather*}
+
 \subsection{Trigonometric Limits (PS \#33)}
+In indeterminate forms, a common trick is to multiple by the
+conjugate of either the numerator or the denominator. The purpose
+of this is to get the limit into the form $\lim_{h\to0}\sin\left(
+h\right)/h$ or $\lim_{h\to0}\left(\cos h-1\right)/h$, which we know
+evaluates to 1 and 0. We cannot use L'Hôpital's Rule, but it can be
+used to check the answer (secretly). If the denominator is zero but
+the numerator is non-zero, analyse the one-sided limits to determine
+if the limit is $\infty$, $-\infty$ or does not exist. Otherwise,
+plug in the value in the limit. Refer to PS \#33 for examples.
+
 \subsection{Inverse Trigonometric Functions (PS \#34-35)}
+The inverse trigonometric functions are defined as the inverse
+of their respective trigonometric functions. However, since they
+are periodic, an inverse would fail the vertical line test and
+would not be considered a function. Therefore, they are defined as 
+\textbf{the inverse of the trigonometric function over an interval}.
+PS \#34 is only concerned with arcsin, arccos and arctan. Below
+are the restricted domains of each function:
+\begin{gather*}
+	\text{sin: }\interval[scaled]{-\frac{\pi}{2}}{\frac{\pi}{2}} \\
+	\text{cos: }\interval[scaled]{0}{\pi} \\
+	\text{tan: }\interval[scaled,open left,open right]
+		{-\frac{\pi}{2}}{\frac{\pi}{2}}
+\end{gather*}
+Below are their respective ranges:
+\begin{gather*}
+	\text{sin: }\interval[scaled]{-1}{1} \\
+	\text{cos: }\interval[scaled]{-1}{1} \\
+	\text{tan: }\interval[scaled,open left,open right]
+		{-\infty}{\infty}
+\end{gather*}
+The domain and range of the inverse are inverted. Therefore, below
+are the domain and range of the inverse trigonometric functions:
+\begin{align*}
+	\text{arcsin domain: }&\interval[scaled]{-1}{1} \\
+	\text{arcsin range: }&\interval[scaled]{-\frac{\pi}{2}}
+		{\frac{\pi}{2}} \\
+	\text{arccos domain: }&\interval[scaled]{-1}{1} \\
+	\text{acccos range: }&\interval[scaled]{0}{\pi} \\
+	\text{arctan domain: }&\interval[scaled,open left,open right]
+		{-\infty}{\infty} \\
+	\text{arctan range: }&\interval[scaled,open left,open right]
+		{-\frac{\pi}{2}}{\frac{\pi}{2}}
+\end{align*}
+NOTE! $\arcsin\left(\sin x\right)$ does not always equal $x$. This
+applies to any other trigonometric function. For any value $x$,
+$\arcsin\left(\sin x\right)$ is a value on $-\frac{\pi}{2}$ and
+$\frac{\pi}{2}$ with the same sine as $x$. However, it is true on
+$\interval[scaled]{-\frac{\pi}{2}}{\frac{\pi}{2}}$ in this example,
+and is true on the domain of the restricted function/range of the
+inverse function for any other trigonometric function. The graph
+of $\arcsin\left(\sin x\right)$ and $\arccos\left(\cos x\right)$
+looks like a zigzag, while $\arctan\left(\tan x\right)$ is the
+graph of $y=x$ on $\interval[scaled,open left,open right]{-\frac
+{\pi}{2}}{\frac{\pi}{2}}$ repeating with period $\pi$.
 
-
+A good way to solve problems or proofs involving inverse
+trigonometric functions is to draw a right-angle triangle. Setting
+an angle to the arcfunction involved, you can then work out the
+ratio of the sides, which might help with the question.
 
 
 
@@ -401,6 +584,119 @@ the range is \boxed{\interval[scaled]{-2}{2}}.
 		\Aboxed{\cos\theta-\cos\varphi&=
 		-2\sin\frac{\theta+\varphi}{2}\sin\frac{\theta-\varphi}{2}} \\
 	\end{align*}
+\end{proof}
+
+\subsection{Limit of $\sin\left(h\right)/h$ as $h\to0$}
+\label{proof:sinclimit}
+\begin{proof}
+	By calculator:
+	$\begin{aligned}[t]
+		\lim_{h\to0}\frac{\sin h}{h}&=\boxed{1}
+	\end{aligned}$
+\end{proof}
+
+\subsection{Limit of $\left(\cos h-1\right)/h$ as $h\to0$}
+\label{proof:coscminus1limit}
+\begin{proof}
+	$\begin{aligned}[t]
+		\lim_{h\to0}\frac{\cos h-1}{h}
+		&=\lim_{h\to0}\left(\frac{\cos h-1}{h}
+			\cdot\frac{\cos h+1}{\cos h+1}\right) \\
+		&=\lim_{h\to0}\left(\frac{1-\cos^2h}{\cos h+1}\cdot
+			\frac{1}{h}\right) \\
+		&=\lim_{h\to0}\frac{\sin h}{\cos h+1}\cdot
+			\lim_{h\to0}\frac{\sin h}{h} \\
+		&=\frac{\sin0}{\cos0+1}\cdot1 \\
+		&=\boxed{0}
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Sine Derivative}
+\label{proof:sinderivative}
+\begin{proof}
+	$\begin{aligned}[t]
+		\diff{}{x}\sin x&=\lim_{h\to0}
+			\frac{\sin\left(x+h\right)-\sin x}{h} \\
+		&=\lim_{h\to0}\frac{\sin x\cos h+\cos x\sin h-\sin x}{h} \\
+		&=\lim_{h\to0}\frac{\sin\left(x\right)\left(\cos h-1\right)+
+			\cos x\sin h}{h} \\
+		&=\lim_{h\to0}\left(\sin x\cdot\frac{\cos h-1}{h}+
+			\cos x\cdot\frac{\sin h}{h}\right) \\
+		&=\sin\left(x\right)\cdot\lim_{h\to0}\frac{\cos h-1}
+			{h}+\cos\left(x\right)\cdot\lim_{h\to0}\frac{\sin h}{h} \\
+		&=\sin\left(x\right)\cdot0+\cos\left(x\right)\cdot1 \\
+		&=\boxed{\cos x}
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Cosine Derivative}
+\label{proof:cosderivative}
+\begin{proof}
+	$\begin{aligned}[t]
+		\diff{}{x}\cos x&=\lim_{h\to0}
+			\frac{\cos\left(x+h\right)-\cos x}{h} \\
+		&=\lim_{h\to0}\frac{\cos x\cos h-\sin x\sin h-\cos x}{h} \\
+		&=\lim_{h\to0}\frac{\cos\left(x\right)\left(\cos h-1\right)-
+			\sin x\sin h}{h} \\
+		&=\lim_{h\to0}\left(\cos x\cdot\frac{\cos h-1}{h}-
+			\sin x\cdot\frac{\sin h}{h}\right) \\
+		&=\cos\left(x\right)\cdot\lim_{h\to0}\frac{\cos h-1}
+			{h}-\sin\left(x\right)\cdot\lim_{h\to0}\frac{\sin h}{h} \\
+		&=\cos\left(x\right)\cdot0-\sin\left(x\right)\cdot1 \\
+		&=\boxed{-\sin x}
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Tangent Derivative}
+\label{proof:tanderivative}
+\begin{proof}
+	$\begin{aligned}[t]
+		\diff{}{x}\tan x&=\diff{}{x}\left[\frac{\sin x}{\cos x}\right] \\
+		&=\frac{\diff{}{x}\left[\sin x\right]\cos x-\sin\left(x\right)
+			\diff{}{x}\left[\cos x\right]}{\cos^2x} \\
+		&=\frac{\cos x\cdot\cos x-\sin\left(x\right)\left(-\cos x\right)}
+			{\cos^2x} \\
+		&=\frac{\cos^2x+\sin^2x}{\cos^2x} \\
+		&=\frac{1}{\cos^2x} \\
+		&=\boxed{\sec^2x} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Cotangent Derivative}
+\label{proof:cotderivative}
+\begin{proof}
+	$\begin{aligned}[t]
+		\diff{}{x}\cot x&=\diff{}{x}\left[\frac{1}{\tan x}\right] \\
+		&=\frac{\diff{}{x}\left[1\right]\tan x-1\cdot\diff{}{x}
+			\left[\tan x\right]}{\tan^2x} \\
+		&=\frac{-\sec^2x\cdot\cos^2x}{\tan^2x\cdot\cos^2x} \\
+		&=-\frac{1}{\sin^2x} \\
+		&=\boxed{-\csc^2x}
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Secant Derivative}
+\label{proof:secderivative}
+\begin{proof}
+	$\begin{aligned}[t]
+		\diff{}{x}\sec x&=\diff{}{x}\left[\frac{1}{\cos x}\right] \\
+		&=\frac{\diff{}{x}\left[1\right]\cos x-1\cdot\diff{}{x}
+			\left[\cos x\right]}{\cos^2x} \\
+		&=\frac{\sin x}{\cos^2x} \\
+		&=\boxed{\tan\left(x\right)\sec\left(x\right)} \\
+	\end{aligned} \\$
+\end{proof}
+
+\subsection{Cosecant Derivative}
+\label{proof:cscderivative}
+\begin{proof}
+	$\begin{aligned}[t]
+		\diff{}{x}\csc x&=\diff{}{x}\left[\frac{1}{\sin x}\right] \\
+		&=\frac{\diff{}{x}\left[1\right]\sin x-1\cdot\diff{}{x}
+			\left[\sin x\right]}{\sin^2x} \\
+		&=\frac{-\cos x}{\sin^2x} \\
+		&=\boxed{-\cot\left(x\right)\csc\left(x\right)} \\
+	\end{aligned} \\$
 \end{proof}
 
 
