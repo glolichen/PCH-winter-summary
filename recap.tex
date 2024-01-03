@@ -14,8 +14,11 @@
 \usepackage{multicol}
 \usepackage{tikz}
 
+\usetikzlibrary{positioning}
+\usetikzlibrary{angles,quotes}
+
 %opening
-\title{PCH Winter Summary}
+\title{Everything I Learned From PCH}
 \author{Jayden Li}
 \date{December 2023 -- February 2024}
 
@@ -36,10 +39,13 @@
 \newgeometry{margin=0.8in}
 
 \section{Trigonometry}
-\subsection{Pythagorean Identity}
-\begin{center}
-	$\sin^2x+\cos^2x=1$
-\end{center}
+\subsection{Pythagorean Identities}
+\begin{gather*}
+	\sin^2x+\cos^2x=1 \\
+	\\
+	\tan^2x+1=\sec^2x \\
+	\cot^2x+1=\csc^2x
+\end{gather*}
 
 \subsection{Even/Odd Identities}
 \begin{center}
@@ -314,7 +320,10 @@ dilation/stretch and translation, then graph one period.
 	}
 \end{gather*}
 A tip: the derivative of a function starts with a minus sign if
-and only if it begins with "co."
+and only if it begins with "co." Also, the derivative of a
+function starting with "co" can be found by looking at the
+derivative of the corrresponding function without "co", and adding
+"co" to each trigonometric function in it and put a negative sign.
 
 \subsection{Trigonometric Limits (PS \#33)}
 In indeterminate forms, a common trick is to multiple by the
@@ -409,6 +418,150 @@ should do in CYU/exam instead of memorizing these.
 	\tan\left(\arcsin x\right)=\frac{x}{\sqrt{1-x^2}} \\
 	\tan\left(\arccos x\right)=\frac{\sqrt{1-x^2}}{x}
 \end{gather*}
+
+\subsection{Trigonometric Equations and Inequalities (PS \#36)}
+\subsubsection{General solution for sine}
+\begin{minipage}[t]{0.3\linewidth}
+\begin{tikzpicture}	[
+	baseline=(current bounding box.north),
+	ang/.style={draw, angle eccentricity=1.5,angle radius=0.6cm}
+]	
+	\draw
+		(0,0) node[circle,fill,inner sep=1,label=below left:$S$](S){}
+		(-2,0) node[circle,inner sep=0](A){}
+		(2,0) node[circle,inner sep=0,label=right:$B$](B){}
+		(0,-2) node[circle,inner sep=0](C){}
+		(0,2) node[circle,inner sep=0](D){}
+		% (4,0) node[label=right:$Q$](Q){}
+		% (2,-5) node[circle,fill,inner sep=1,label=below:$R$](R){}
+		% node[midway,label=right:$10$cm](){}
+		% -- cycle node[midway,label=left:$10$cm](){}
+		(A) -- (B)
+		(C) -- (D)
+		% pic["$\theta$",ang,pic text options={shift={(-12pt,-20pt)}}]
+		% {angle=Q--R--P}
+	; 
+
+	\path
+		(38:2) node[circle,fill,inner sep=1,label=above right:$O$](O){}
+		(142:2) node[circle,fill,inner sep=1,label=above left:$P$](P){}
+	;
+	\draw
+		(B) arc(0:360:2) -- cycle
+		(O) -- (S)
+		(P) -- (S)
+		(P) -- (O)
+	;
+\end{tikzpicture}
+\end{minipage}
+\begin{minipage}[t]{0.7\linewidth}
+Let $O$ and $P$ be points on the unit circle centered on $S$ in
+quadrants I and II, respectively. Let $a=O_y=P_y$, and $\theta$ be
+the solution to the equation $\sin\theta=a$.
+
+We see that there are two angles $\theta\in\interval[]{0}{\pi}$ that
+solve this equation. Let $\theta_1=\angle{OSB}$ and
+$\theta_2=\angle{PSB}=\pi-\angle{OSB}=\pi-\theta_1$.
+
+Because $\theta_1$ is in QI, $\theta_1=\arcsin a+2\pi m$. We also
+have that:
+\begin{align*}
+	\theta_2&=\pi-\theta_1 \\
+	&=\pi-\arcsin a-2\pi m \\
+	&=-\arcsin a+(1-2m)\pi \\
+\end{align*}
+\end{minipage}
+
+Now, we can combine the solutions of $\theta_1$ and $\theta_2$.
+\begin{equation*}
+	\theta=\arcsin a+2\pi m\quad\mathrm{or}\quad-\arcsin a+(1-2m)\pi \\
+\end{equation*}
+$2m$ must be even and $1-2m$ must be odd. Let $n=2m$. We now have
+that $\arcsin a$ is multiplied by $1$ when $n$ is even, and is
+multiplied $-1$ when $n$ is odd. This is the behavior of $(-1)^n$.
+Signs do not matter because $m,n\in\mathbb{Z}$. Finally, we have
+the general solution to $\sin\theta=a$:
+\begin{equation*}
+	\boxed{\theta=(-1)^{n}\cdot\arcsin(a)+\pi n}
+\end{equation*}
+This conclusion holds for points in the quadrants III and IV as well,
+and the proof is left as an exercise to the reader.
+
+\subsubsection{General solution for cosine}
+
+\begin{minipage}[t]{0.3\linewidth}
+	\begin{tikzpicture}	[
+		baseline=(current bounding box.north),
+		ang/.style={draw, angle eccentricity=1.5,angle radius=0.6cm}
+	]	
+		\draw
+			(0,0) node[circle,fill,inner sep=1,label=below left:$S$](S){}
+			(-2,0) node[circle,inner sep=0](A){}
+			(2,0) node[circle,fill,inner sep=1,label=right:$B$](B){}
+			(0,-2) node[circle,inner sep=0](C){}
+			(0,2) node[circle,inner sep=0](D){}
+			% (4,0) node[label=right:$Q$](Q){}
+			% (2,-5) node[circle,fill,inner sep=1,label=below:$R$](R){}
+			% node[midway,label=right:$10$cm](){}
+			% -- cycle node[midway,label=left:$10$cm](){}
+			(A) -- (B)
+			(C) -- (D)
+			% pic["$\theta$",ang,pic text options={shift={(-12pt,-20pt)}}]
+			% {angle=Q--R--P}
+		; 
+	
+		\path
+			(52:2) node[circle,fill,inner sep=1,label=right:$O$](O){}
+			(-52:2) node[circle,fill,inner sep=1,label=right:$P$](P){}
+		;
+		\draw
+			(B) arc(0:360:2) -- cycle
+			(O) -- (S)
+			(P) -- (S)
+			(P) -- (O)
+		;
+	\end{tikzpicture}
+\end{minipage}
+\begin{minipage}[t]{0.7\textwidth}
+Let $O$ and $P$ be points on the unit circle centered on $S$ in
+quadrants I and IV, respectively. Let $a=O_x=P_x$, and $\theta$ be
+the solution to the equation $\sin\theta=a$.
+
+We see that there are two angles $\theta\in\interval[]{-\frac{\pi}{2}}
+{\frac{\pi}{2}}$ that
+solve this equation. Let $\theta_1=\angle{OSB}$ and
+$\theta_2=\angle{PSB}=-\angle{OSB}=-\theta_1$.
+
+$\theta_1=\arccos a+2\pi n$ and $\theta_2=-(\arccos a+2\pi n)=
+-\arccos a+2\pi n$. It is valid to flip the sign of $2\pi n$ as
+$n$ represents all integers, both positive and negative.
+\end{minipage}
+
+Thus we see that:
+\begin{gather*}
+	\theta=\arccos a+2\pi n\quad\mathrm{or}\quad-\arccos a+2\pi n \\
+	\boxed{\theta=\pm\arccos a+2\pi n}
+\end{gather*}
+
+\subsubsection{General solution for tangent}
+
+Unlike sine and cosine, if $\tan\alpha=\tan\beta$ and $\alpha\neq
+\beta$, $\alpha$ and $\beta$ must be in ``opposite quadrants.'' That
+is, if $\alpha$ is in QI, $\beta$ must be in QIII, and vice versa.
+The same applies for QII and QIV. Along with the fact that the
+periodicity of tangent is $\pi$, we can see that, if $\tan x=a$:
+\begin{equation*}
+	\boxed{x=\arctan a+\pi n}
+\end{equation*}
+
+
+
+
+
+
+
+
+
 
 
 \newpage
